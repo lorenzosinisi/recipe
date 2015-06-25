@@ -1,5 +1,5 @@
 #!/usr/bin/ruby
-require "yaml" 
+require "yaml"
 
 def yaml_data
 	if ARGV[0]
@@ -10,11 +10,11 @@ def yaml_data
 end
 
 def recipe
- if ARGV[1] == "--force"
-	give_me_recipe_anyway
- else
-	 give_me_recipe
- end
+	if ARGV[1] == "--force"
+		give_me_recipe_anyway
+	else
+		give_me_recipe
+	end
 end
 
 def give_me_recipe
@@ -24,12 +24,12 @@ def give_me_recipe
 end
 
 def give_me_recipe_anyway
-		while 
-			arr = yaml_data.to_a.sample(3)
-			sum = arr.inject(0){|sum,x| sum + x[1]}
-			break if sum == 0
-		end
-		arr.select{|names,value| puts names }
+	while
+		arr = yaml_data.to_a.sample(3)
+		sum = arr.inject(0){|sum,x| sum + x[1]}
+		break if sum == 0
+	end
+	arr.select{|names,value| puts names }
 end
 
 recipe
