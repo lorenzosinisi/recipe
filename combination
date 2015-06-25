@@ -20,7 +20,7 @@ end
 def give_me_recipe
   arr = yaml_data.to_a.sample(3)
   sum = arr.inject(0){|sum,x| sum + x[1]}
-  arr.select{|names,value| puts value } if sum == 0 or puts "not possible"
+  arr.select{|names,value| puts names } if sum == 0 or puts "not possible"
 end
 
 def give_me_recipe_anyway
