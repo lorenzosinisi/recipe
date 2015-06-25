@@ -1,4 +1,4 @@
 -Usage in --force mode: 
 - ruby combination your_data.yml --force
--Normal usage:
+- Normal usage:
 - ruby combination your_data.yml
