@@ -9,27 +9,30 @@ def yaml_data
   end
 end
 
-def recipe
+def recipe?
   if ARGV[1] == "--force"
-    give_me_recipe_anyway
+    ensure_give_me_recipe!
   else
     give_me_recipe
   end
 end
 
+def set_data_and_sum
+  @arr = yaml_data.to_a.sample(3)
+  @sum = @arr.inject(0){|sum,x| sum + x[1]}
+end
+
 def give_me_recipe
-  arr = yaml_data.to_a.sample(3)
-  sum = arr.inject(0){|sum,x| sum + x[1]}
-  arr.select{|names,value| puts names } if sum == 0 or puts "not possible"
+  set_data_and_sum
+  @arr.select{|names,value| puts names } if @sum == 0 or puts "not possible"
 end
 
-def give_me_recipe_anyway
+def ensure_give_me_recipe!
   while
-    arr = yaml_data.to_a.sample(3)
-    sum = arr.inject(0){|sum,x| sum + x[1]}
-    break if sum == 0
+    set_data_and_sum
+    break if @sum == 0
   end
-  arr.select{|names,value| puts names }
+  @arr.select{|names,value| puts names }
 end
 
-recipe
+recipe?
